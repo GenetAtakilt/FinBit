@@ -2,15 +2,16 @@ package com.project.finbit.appconfig;
 
 import android.app.Application;
 
+import com.orm.SugarApp;
 import com.orm.SugarContext;
 
-public class AppConfig extends Application {
+public class AppConfig extends SugarApp {
 
     @Override
     public void onCreate() {
         super.onCreate();
 
-        SugarContext.init(this);
+        SugarContext.init(getApplicationContext());
     }
 
     @Override

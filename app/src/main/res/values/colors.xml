@@ -11,4 +11,7 @@
     <color name="silver_light">#b6b7b9</color>
     <color name="blue">@color/lightblue</color>
     <color name="lightblue">#95C8D8</color>
+    <color name="purple">#AE01FF</color>
+    <color name="purple_dark">#8800C7</color>
+    <color name="background_purple">#DAA2FF</color>
 </resources>

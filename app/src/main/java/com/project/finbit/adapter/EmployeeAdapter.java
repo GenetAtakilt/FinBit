@@ -16,15 +16,21 @@ import com.project.finbit.model.DefultEmployeeResponse;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class EmployeeAdapter extends RecyclerView.Adapter<EmployeeAdapter.EmployeeViewHolder> {
 
-    private ArrayList<Employess> employesses;
+//    private ArrayList<Employess> employesses;
+
+
+
     private Context mCtx;
 
-    public EmployeeAdapter(ArrayList<Employess> employesses, Context mCtx) {
-        this.employesses = employesses;
+    private List<DefultEmployeeResponse> defultEmployeeResponses;
+
+    public EmployeeAdapter(Context mCtx, List<DefultEmployeeResponse> defultEmployeeResponses) {
         this.mCtx = mCtx;
+        this.defultEmployeeResponses = defultEmployeeResponses;
     }
 
     @NonNull
@@ -40,15 +46,22 @@ public class EmployeeAdapter extends RecyclerView.Adapter<EmployeeAdapter.Employ
     @Override
     public void onBindViewHolder(@NonNull EmployeeViewHolder holder, int position) {
 
-        holder.employeeName.setText(employesses.get(position).getEmployee_name());
-        holder.employeeAge.setText(employesses.get(position).getEmployee_age());
-        holder.employeeSalary.setText(employesses.get(position).getEmployee_salary());
-        Picasso.get().load(employesses.get(position).getProfile_image()).into(holder.employeePicture);
+        holder.employeeName.setText(defultEmployeeResponses.get(position).getEmployeeName());
+        holder.employeeAge.setText(defultEmployeeResponses.get(position).getEmployeeAge());
+        holder.employeeSalary.setText(defultEmployeeResponses.get(position).getEmployeeSalary());
+
+        if (defultEmployeeResponses.get(position).getProfileImage().isEmpty()) {
+            holder.employeePicture.setImageResource(R.drawable.add_photo);
+        } else{
+            Picasso.get().load(defultEmployeeResponses.get(position).getProfileImage()).into( holder.employeePicture);
+        }
+        //Picasso.get().load(defultEmployeeResponses.get(position).getProfileImage()).into(holder.employeePicture);
+//        holder.employeePicture.setImageDrawable(mCtx.getResources().getDrawable(defultEmployeeResponses.));
     }
 
     @Override
     public int getItemCount() {
-        return employesses.size();
+        return defultEmployeeResponses.size();
     }
 
     class EmployeeViewHolder extends RecyclerView.ViewHolder

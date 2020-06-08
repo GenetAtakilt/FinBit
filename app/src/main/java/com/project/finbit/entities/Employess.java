@@ -8,60 +8,65 @@ public class Employess extends SugarRecord {
 
     @Unique
     @Column(name = "id")
-    private String id;
+    private Long id;
 
-    @Column(name = "Employee_name")
-    private String employee_name ;
+    @Column(name = "employee_name")
+    private String employeeName ;
 
-    @Column(name = "Employee_salary")
-    private String employee_salary;
+    @Column(name = "employee_salary")
+    private String employeeSalary;
 
-    @Column(name = "Employee_age")
-    private String employee_age;
+    @Column(name = "employee_age")
+    private String employeeAge;
 
-    @Column(name = "Profile_name")
-    private String profile_image;
+    @Column(name = "profile_name")
+    private String profileImage;
+
 
     public Employess() {
     }
 
-    public Employess(String employee_name, String employee_salary, String employee_age, String profile_image) {
-        this.employee_name = employee_name;
-        this.employee_salary = employee_salary;
-        this.employee_age = employee_age;
-        this.profile_image = profile_image;
+    public Employess(String employeeName, String employeeSalary, String employeeAge, String profileImage) {
+        this.employeeName = employeeName;
+        this.employeeSalary = employeeSalary;
+        this.employeeAge = employeeAge;
+        this.profileImage = profileImage;
     }
 
-    public String getEmployee_name() {
-        return employee_name;
+    @Override
+    public Long getId() {
+        return id;
     }
 
-    public String getEmployee_salary() {
-        return employee_salary;
+    public String getEmployeeName() {
+        return employeeName;
     }
 
-    public String getEmployee_age() {
-        return employee_age;
+    public void setEmployeeName(String employeeName) {
+        this.employeeName = employeeName;
     }
 
-    public String getProfile_image() {
-        return profile_image;
+    public String getEmployeeSalary() {
+        return employeeSalary;
     }
 
-
-    public void setEmployee_name(String employee_name) {
-        this.employee_name = employee_name;
+    public void setEmployeeSalary(String employeeSalary) {
+        this.employeeSalary = employeeSalary;
     }
 
-    public void setEmployee_salary(String employee_salary) {
-        this.employee_salary = employee_salary;
+    public String getEmployeeAge() {
+        return employeeAge;
     }
 
-    public void setEmployee_age(String employee_age) {
-        this.employee_age = employee_age;
+    public void setEmployeeAge(String employeeAge) {
+        this.employeeAge = employeeAge;
     }
 
-    public void setProfile_image(String profile_image) {
-        this.profile_image = profile_image;
+    public String getProfileImage() {
+        return profileImage;
+    }
+
+    public void setProfileImage(String profileImage) {
+        this.profileImage = profileImage;
     }
 }

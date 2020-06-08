@@ -39,18 +39,19 @@ public class InsertEmployeeActivity extends BaseActivity {
         String salary = employeeSalary.getText().toString();
 
 
-        employess.setEmployee_name(name);
-        employess.setEmployee_age(age);
-        employess.setEmployee_salary(salary);
+        employess.setEmployeeName(name);
+        employess.setEmployeeAge(age);
+        employess.setEmployeeSalary(salary);
+
 
         employess.save();
         setResult(RESULT_OK);
 
         Toast.makeText(InsertEmployeeActivity.this,"inserted",Toast.LENGTH_LONG).show();
 
-        employess.setEmployee_name("uui");
-        employess.setEmployee_age("jk");
-        employess.setEmployee_salary("nn");
+        employess.setEmployeeName("uui");
+        employess.setEmployeeAge("jk");
+        employess.setProfileImage("nn");
 
 
     }
