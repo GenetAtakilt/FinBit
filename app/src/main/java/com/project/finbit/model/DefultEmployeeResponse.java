@@ -3,7 +3,7 @@ package com.project.finbit.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class DefultEmployeeResponse {
+public class DefultEmployeeResponse  {
 
 
     @SerializedName("id")

@@ -33,6 +33,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
   private RecyclerView recyclerView;
   private List<DefultEmployeeResponse> defultEmployeeResponses;
    EmployeeAdapter employeeAdapter;
+   private List<Employess> employessList;
 
 //   Employess employess;
 //   private ArrayList<Employess> employessArrayList;
@@ -68,12 +69,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         recyclerView.setHasFixedSize(true);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(layoutManager);
-//
-//        employessArrayList.add(employess);
-//
-//        employeeAdapter = new EmployeeAdapter(employessArrayList, MainActivity.this);
-//        recyclerView.setAdapter(employeeAdapter);
+
         getemployeeResponse();
+
 
     }
 
@@ -97,10 +95,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                     }
 
                 defultEmployeeResponses = response.body().getData();
-                Toast.makeText(MainActivity.this,"success",Toast.LENGTH_LONG).show();
+                //Toast.makeText(MainActivity.this,"success",Toast.LENGTH_LONG).show();
 
-                employeeAdapter = new EmployeeAdapter(MainActivity.this, defultEmployeeResponses);
-                recyclerView.setAdapter(employeeAdapter);
+             insertEmployee();
 
             }
 
@@ -116,41 +113,40 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
 
 
-//        employeeResponseCall.enqueue(new Callback<DefultEmployeeResponse>() {
-//            @Override
-//            public void onResponse(Call<DefultEmployeeResponse> call, Response<DefultEmployeeResponse> response) {
-//
-//
-//                   if(!response.isSuccessful())
-//                    {
-//                        Toast.makeText(MainActivity.this,response.code(),Toast.LENGTH_LONG);
-//                        return;
-//                    }
-//
-//
-//                   DefultEmployeeResponse defultEmployeeResponse = response.body();
-//                   Toast.makeText(MainActivity.this,"success",Toast.LENGTH_LONG).show();
-//
-////                 defultEmployeeResponseArrayList = new ArrayList<DefultEmployeeResponse>(defultEmployeeResponse);
-//
-//
-//                                // Null pointer exeption
-//               //       Log.d("name", String.valueOf(defultEmployeeResponseArrayList));
-////                      Log.d("age",defultEmployeeResponse.getEmployeeAge());
-////                      Log.d("salary",defultEmployeeResponse.getEmployeeSalary());
-////                      Log.d("pic",defultEmployeeResponse.getProfileImage());
-//
-//
-//            }
-//
-//            @Override
-//            public void onFailure(Call<DefultEmployeeResponse> call, Throwable t) {
-//
-//                Toast.makeText(MainActivity.this, t.getMessage(), Toast.LENGTH_LONG).show();
-//              Log.d("error",t.getMessage());
-//            }
-//        });
 
+
+
+    }
+
+    private void insertEmployee()
+    {
+        Employess employess = new Employess();
+        employessList = new ArrayList<>();
+
+
+        for (DefultEmployeeResponse employeeResponse : defultEmployeeResponses)
+        {
+          //  Toast.makeText(MainActivity.this,employeeResponse.getEmployeeName(),Toast.LENGTH_LONG).show();
+
+            employess.setEmployeeName(employeeResponse.getEmployeeName());
+            employess.setEmployeeAge(employeeResponse.getEmployeeAge());
+            employess.setEmployeeSalary(employeeResponse.getEmployeeSalary());
+            employess.setProfileImage(employeeResponse.getProfileImage());
+
+
+
+        }
+
+        //Toast.makeText(MainActivity.this,employess.getEmployeeName(),Toast.LENGTH_LONG).show();
+         employess.save();
+        employessList.add(employess);
+
+
+        setResult(RESULT_OK);
+
+        //Toast.makeText(MainActivity.this,"inserted",Toast.LENGTH_LONG).show();
+        employeeAdapter = new EmployeeAdapter(MainActivity.this, employessList);
+        recyclerView.setAdapter(employeeAdapter);
 
 
     }

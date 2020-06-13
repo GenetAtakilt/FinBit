@@ -1,5 +1,6 @@
 package com.project.finbit.screens;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -49,9 +50,9 @@ public class InsertEmployeeActivity extends BaseActivity {
 
         Toast.makeText(InsertEmployeeActivity.this,"inserted",Toast.LENGTH_LONG).show();
 
-        employess.setEmployeeName("uui");
-        employess.setEmployeeAge("jk");
-        employess.setProfileImage("nn");
+//        employess.setEmployeeName("uui");
+//        employess.setEmployeeAge("jk");
+//        employess.setProfileImage("nn");
 
 
     }
@@ -61,6 +62,8 @@ public class InsertEmployeeActivity extends BaseActivity {
 
 
         insertData();
+
+
     }
 
 }
